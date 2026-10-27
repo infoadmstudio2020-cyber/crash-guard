@@ -1,0 +1,18 @@
+<resources>
+    <string name="crashguard_app_name">CrashGuard</string>
+    <string name="crashguard_crash_title">Application Encountered a Problem</string>
+    <string name="crashguard_crash_subtitle">An unexpected error occurred. The application state has been preserved and diagnostic information was captured.</string>
+    <string name="crashguard_btn_restart">Restart Application</string>
+    <string name="crashguard_btn_close">Close App</string>
+    <string name="crashguard_btn_copy">Copy Report</string>
+    <string name="crashguard_btn_share">Share Diagnostics</string>
+    <string name="crashguard_tab_summary">Summary</string>
+    <string name="crashguard_tab_stacktrace">Stack Trace</string>
+    <string name="crashguard_tab_device">Device &amp; OS</string>
+    <string name="crashguard_tab_breadcrumbs">Breadcrumbs</string>
+    <string name="crashguard_copied_to_clipboard">Crash report copied to clipboard</string>
+    <string name="crashguard_notification_channel_name">Crash Diagnostics</string>
+    <string name="crashguard_notification_channel_desc">Alerts for caught crashes and exceptions</string>
+    <string name="crashguard_notification_title">App Crash Detected</string>
+    <string name="crashguard_notification_text">Tap to view crash diagnostic details and stacktrace.</string>
+</resources>

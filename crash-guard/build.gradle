@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.roni.library.crashguard'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 36
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.core:core:1.15.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.roni.library'
+                artifactId = 'crash-guard'
+                version = '1.0.0'
+
+                pom {
+                    name = 'CrashGuard'
+                    description = 'Advanced, production-ready Android Crash Guard library with process isolation, breadcrumbs, persistent reporting, and recovery UI.'
+                    url = 'https://github.com/infoadmstudio2020-cyber/crash-guard'
+
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id = 'infoadmstudio2020-cyber'
+                            name = 'MD Roni Hossain'
+                            email = 'mdronihossain305@gmail.com'
+                        }
+                    }
+
+                    scm {
+                        connection = 'scm:git:git://github.com/infoadmstudio2020-cyber/crash-guard.git'
+                        developerConnection = 'scm:git:ssh://github.com/infoadmstudio2020-cyber/crash-guard.git'
+                        url = 'https://github.com/infoadmstudio2020-cyber/crash-guard'
+                    }
+                }
+            }
+        }
+    }
+}

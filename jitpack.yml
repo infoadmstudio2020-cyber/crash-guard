@@ -1,0 +1,10 @@
+# JitPack configuration file for CrashGuard Library
+# https://jitpack.io/docs/BUILDING/
+jdk:
+  - openjdk17
+
+before_install:
+  - chmod +x gradlew
+
+install:
+  - ./gradlew :crash-guard:assembleRelease :crash-guard:publishToMavenLocal

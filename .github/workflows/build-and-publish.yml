@@ -1,0 +1,84 @@
+name: Build, Test and Release CrashGuard
+
+on:
+  push:
+    branches: [ "main", "master" ]
+    tags:
+      - 'v*'
+      - '[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build:
+    name: Build & Verify Library & Demo
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run Unit Tests for crash-guard
+        run: ./gradlew :crash-guard:testDebugUnitTest --stacktrace
+
+      - name: Build Release AAR (crash-guard)
+        run: ./gradlew :crash-guard:assembleRelease --stacktrace
+
+      - name: Publish to Maven Local (Verification for JitPack)
+        run: ./gradlew :crash-guard:publishToMavenLocal --stacktrace
+
+      - name: Build Demo APK
+        run: ./gradlew :demo:assembleDebug --stacktrace
+
+      - name: Upload Library AAR Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: crash-guard-release-aar
+          path: crash-guard/build/outputs/aar/crash-guard-release.aar
+
+      - name: Upload Demo APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: crash-guard-demo-apk
+          path: demo/build/outputs/apk/debug/demo-debug.apk
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Built AAR
+        uses: actions/download-artifact@v4
+        with:
+          name: crash-guard-release-aar
+
+      - name: Download Built Demo APK
+        uses: actions/download-artifact@v4
+        with:
+          name: crash-guard-demo-apk
+
+      - name: Create GitHub Release with Artifacts
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            crash-guard-release.aar
+            demo-debug.apk
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

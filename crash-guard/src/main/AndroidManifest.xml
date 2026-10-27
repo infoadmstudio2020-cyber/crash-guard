@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Normal permissions for hardware & state queries -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application>
+        <!-- Isolated process crash reporting activity -->
+        <activity
+            android:name="com.roni.library.crashguard.DefaultCrashActivity"
+            android:process=":crash_guard_process"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:excludeFromRecents="true"
+            android:finishOnTaskLaunch="true"
+            android:theme="@style/Theme.CrashGuard.CrashActivity" />
+    </application>
+
+</manifest>

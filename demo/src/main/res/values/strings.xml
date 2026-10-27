@@ -1,0 +1,20 @@
+<resources>
+    <string name="demo_app_name">CrashGuard Demo</string>
+    <string name="demo_welcome_title">CrashGuard Diagnostics Lab</string>
+    <string name="demo_welcome_desc">Production-grade Android crash interceptor, process isolation, breadcrumbs, and persistent diagnostic storage.</string>
+    <string name="demo_trigger_npe">NullPointerException (Main Thread)</string>
+    <string name="demo_trigger_bg">Crash on Background Thread</string>
+    <string name="demo_trigger_math">Arithmetic Exception (10 / 0)</string>
+    <string name="demo_trigger_oom">Simulate OutOfMemory</string>
+    <string name="demo_trigger_chained">Nested Chained Exception</string>
+    <string name="demo_trigger_handled">Log Non-Fatal Handled Exception</string>
+    <string name="demo_add_nav_breadcrumb">Add Navigation Breadcrumb</string>
+    <string name="demo_add_net_breadcrumb">Add Network Breadcrumb</string>
+    <string name="demo_view_history">View Stored Crash Reports</string>
+    <string name="demo_use_custom_screen">Use Custom Crash Activity</string>
+    <string name="demo_reports_history">Crash Report History</string>
+    <string name="demo_clear_all">Clear All</string>
+    <string name="demo_no_reports">No crash reports recorded yet. Trigger a crash or non-fatal exception above!</string>
+    <string name="demo_custom_crash_title">Custom App Recovery Screen</string>
+    <string name="demo_custom_crash_desc">Demonstrating a developer-customized crash activity UI running safely in an isolated sub-process (:crash_guard_process).</string>
+</resources>
