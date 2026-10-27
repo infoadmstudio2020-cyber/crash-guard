@@ -46,14 +46,14 @@ dependencyResolutionManagement {
 ### 2. Add the dependency to your module `build.gradle`
 ```groovy
 dependencies {
-    implementation 'com.github.infoadmstudio2020-cyber:crash-guard:1.0.0'
+    implementation 'com.github.infoadmstudio2020-cyber:crash-guard:1.0.1'
 }
 ```
 
 Or with Kotlin DSL (`build.gradle.kts`):
 ```kotlin
 dependencies {
-    implementation("com.github.infoadmstudio2020-cyber:crash-guard:1.0.0")
+    implementation("com.github.infoadmstudio2020-cyber:crash-guard:1.0.1")
 }
 ```
 

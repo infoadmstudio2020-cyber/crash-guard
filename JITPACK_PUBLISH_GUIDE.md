@@ -12,8 +12,8 @@ This guide provides the exact workflow to publish `CrashGuard` to **JitPack.io**
 | **GitHub Repository** | `crash-guard` |
 | **Group ID** | `com.github.infoadmstudio2020-cyber` (or `com.roni.library` if custom domain verified) |
 | **Artifact ID** | `crash-guard` |
-| **Release Version** | `1.0.0` |
-| **Complete Coordinate** | `com.github.infoadmstudio2020-cyber:crash-guard:1.0.0` |
+| **Release Version** | `1.0.1` |
+| **Complete Coordinate** | `com.github.infoadmstudio2020-cyber:crash-guard:1.0.1` |
 
 ---
 
@@ -35,7 +35,7 @@ git init -b main
 git add .
 
 # Create initial commit
-git commit -m "feat: initial release of CrashGuard Android Library v1.0.0"
+git commit -m "feat: initial release of CrashGuard Android Library v1.0.1"
 
 # Link your remote repository
 git remote add origin https://github.com/infoadmstudio2020-cyber/crash-guard.git
@@ -44,18 +44,18 @@ git remote add origin https://github.com/infoadmstudio2020-cyber/crash-guard.git
 git push -u origin main
 ```
 
-### Step 3: Create and Push the `1.0.0` Git Tag
+### Step 3: Create and Push the `1.0.1` Git Tag
 JitPack builds artifacts corresponding to Git tags or releases.
 
 ```bash
-# Create annotated tag for version 1.0.0
-git tag -a 1.0.0 -m "Release version 1.0.0"
+# Create annotated tag for version 1.0.1
+git tag -a 1.0.1 -m "Release version 1.0.1"
 
 # Push tag to GitHub
-git push origin 1.0.0
+git push origin 1.0.1
 ```
 
-*Alternatively, create a Release on GitHub web UI with tag `1.0.0`.*
+*Alternatively, create a Release on GitHub web UI with tag `1.0.1`.*
 
 ---
 
@@ -84,7 +84,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.roni.library'
                 artifactId = 'crash-guard'
-                version = '1.0.0'
+                version = '1.0.1'
             }
         }
     }
@@ -96,7 +96,7 @@ afterEvaluate {
 ## 🔍 Step 4: Verify on JitPack
 1. Open [https://jitpack.io](https://jitpack.io)
 2. Enter `infoadmstudio2020-cyber/crash-guard` into the search box and click **Look up**.
-3. Locate tag `1.0.0` in the versions table.
+3. Locate tag `1.0.1` in the versions table.
 4. Click **Get it**.
 5. JitPack will trigger its builder and display a status indicator:
    - 🟢 **Green (Log)**: Build succeeded and artifact is indexed!
@@ -120,13 +120,13 @@ dependencyResolutionManagement {
 In consumer `app/build.gradle`:
 ```groovy
 dependencies {
-    implementation 'com.github.infoadmstudio2020-cyber:crash-guard:1.0.0'
+    implementation 'com.github.infoadmstudio2020-cyber:crash-guard:1.0.1'
 }
 ```
 
 ---
 
 ## 🔒 Custom Domain (`com.roni.library`) Verification (Optional)
-If you wish to publish under `com.roni.library:crash-guard:1.0.0` instead of `com.github.infoadmstudio2020-cyber`:
+If you wish to publish under `com.roni.library:crash-guard:1.0.1` instead of `com.github.infoadmstudio2020-cyber`:
 1. Add a DNS TXT record for `roni.com` pointing to your GitHub user profile.
 2. Follow the official [JitPack Custom Domain documentation](https://jitpack.io/docs/CUSTOM-DOMAIN/).

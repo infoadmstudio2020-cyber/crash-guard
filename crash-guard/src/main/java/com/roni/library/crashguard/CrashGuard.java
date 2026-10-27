@@ -53,7 +53,7 @@ public final class CrashGuard {
         Thread.setDefaultUncaughtExceptionHandler(this.crashHandler);
 
         // Seed initial breadcrumbs
-        addBreadcrumb("CrashGuard initialized (v1.0.0)", Breadcrumb.Type.SYSTEM, "init");
+        addBreadcrumb("CrashGuard initialized (v1.0.1)", Breadcrumb.Type.SYSTEM, "init");
     }
 
     /**
